@@ -1,0 +1,18 @@
+# Ambiente e credenciais
+.env
+venv/
+.venv/
+
+# Python
+__pycache__/
+*.pyc
+
+# Editor
+.vscode/
+.idea/
+tempCodeRunnerFile.py
+
+# Dados e saídas locais
+entrada_dataset/
+saida/
+*.db
