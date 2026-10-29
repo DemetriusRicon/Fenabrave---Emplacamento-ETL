@@ -113,17 +113,15 @@ Quando um segmento não tem rótulo, o valor é `100 − soma dos demais` (`orig
 
 ## Modelo de dados
 
-- `informativo`: uma linha por edição, com o hash SHA-256 do arquivo (evita carga duplicada).
+- `informativo`: uma linha por edição, com o hash SHA-256 do arquivo evitando duplicidade .
 - `dim_segmento`, `dim_regiao`.
 - `fato_emplacamento`: segmento × ano × mês × `MENSAL|ACUMULADO` → quantidade. Só os 7 segmentos base.
 - `fato_participacao_regional`: segmento × região × ano × mês → percentual e `origem_valor`.
 - Não há views: Total e variações são calculados nas consultas. Cada edição republica meses anteriores, então, para ter o valor mais recente, use a linha da maior `informativo.edicao` por segmento/ano/mês.
 
 ## Limitações conhecidas
-- O layout é detectado pelos títulos ("Resumo Mensal", "AUTOMÓVEIS" etc.) e pelas cores das regiões. Se a Fenabrave mudar as cores ou os nomes, ajuste `CORES_REGIAO`, `SEGMENTOS_TABELA` e `SEGMENTOS_GRAFICO` em `extract.py`.
+- O layout é detectado pelos títulos ("Resumo Mensal", "AUTOMÓVEIS" etc.) e pelas cores das regiões. Se a Fenabrave mudar as cores ou os nomes, é necessario ajuste no `CORES_REGIAO`, `SEGMENTOS_TABELA` e `SEGMENTOS_GRAFICO` em `extract.py`.
+
+DISCLAIMER : Ela ja alterou ao longo dos anos e esse pipeline não vai funcionar para todos os anos. 
 - A posição das colunas da tabela é fixa (5 volumes + 3 variações), porque os cabeçalhos são imagem.
 
-## Licença
-
-Distribuído sob a licença MIT — veja [LICENSE](LICENSE). Os PDFs e dados de emplacamento são da
-Fenabrave e não fazem parte deste repositório.

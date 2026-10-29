@@ -135,8 +135,7 @@ def _cabecalho(doc: pymupdf.Document) -> tuple[int, int, int]:
     return int(edicao.group(1)), int(ref.group(2)), MESES[ref.group(1)]
 
 
-def extrair_tabelas(page: pymupdf.Page,
-                    pagina: int) -> tuple[list[dict], list[dict]]:
+def extrair_tabelas(page: pymupdf.Page,pagina: int) -> tuple[list[dict], list[dict]]:
     """Retorna (linhas de volume, linhas de participação) da página."""
     palavras = _palavras(page)
     titulo_part = next(
